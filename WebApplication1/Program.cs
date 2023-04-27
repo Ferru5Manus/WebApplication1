@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using VkNet;
 using VkNet.Abstractions;
 using VkNet.Model;
@@ -14,9 +15,12 @@ builder.Services.AddSingleton<IVkApi>(sp => {
                 api.Authorize(new ApiAuthParams{ AccessToken = "vk1.a.netVOAeA61uQimbwhyb9tFAB4ojuOZ6Xm9ddg2E5w64q3DB7KBr3Xp3ZGA_vnI7XQ5Jg0_O_iFEZeWqTg_OWQCQGNJZYKTqlyq8TLSU0PA6P7_e_NlpR9zpG42_YgiOb56ENGTWWa4mItkUEbZ4af3NuxjlCL1BU3TqA67NnZCG564S5ynBPKjosbYjqRe90jRQ-YtVets_YkvFk88iWsw" });
                 return api;
             });
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
 builder.Services.AddSwaggerGen();
 builder.Services.AddMvc();
-
 builder.Services.AddMvc().AddNewtonsoftJson();
 var app = builder.Build();
 
