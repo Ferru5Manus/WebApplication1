@@ -21,9 +21,16 @@ public class CallbackController : ControllerBase
     [HttpPost]
     public IActionResult Callback([FromBody] Updates updates)
     {
+        Console.WriteLine("fired");
         // Тип события
-        Console.WriteLine(updates.Type);
+        switch (updates.Type)
+        {
+            // Если это уведомление для подтверждения адреса
+            case "confirmation":
+                // Отправляем строку для подтверждения 
+                return Ok("2644ba0e");
+        }
 
-        return Ok("ok");
+        return BadRequest();
     }
 }
