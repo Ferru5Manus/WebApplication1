@@ -11,11 +11,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSingleton<IVkApi>(sp => {
                 var api = new VkApi();
-                api.Authorize(new ApiAuthParams{ AccessToken = "vk1.a.YP-Qgq8dfjDt0rnInduZtF8lvi0LGWqBpn83CeXKz-ME8IaVmNJSlLCjFFCNO_n8SoCa2YdXFjDjIKI3w4fx7EbWBpFo7KKK6b8aZbhRgsxAZmht3RGDt3nevdT4XmPIaZPtGUErdw3yhUzWU-KyeWe9rI7vKqjFSJ_iRXxHP40esV-9BrsspUJDYNZhYpPp9ttEKjIHVwFf4uh2UoYT2w" });
+                api.Authorize(new ApiAuthParams{ AccessToken = "vk1.a.netVOAeA61uQimbwhyb9tFAB4ojuOZ6Xm9ddg2E5w64q3DB7KBr3Xp3ZGA_vnI7XQ5Jg0_O_iFEZeWqTg_OWQCQGNJZYKTqlyq8TLSU0PA6P7_e_NlpR9zpG42_YgiOb56ENGTWWa4mItkUEbZ4af3NuxjlCL1BU3TqA67NnZCG564S5ynBPKjosbYjqRe90jRQ-YtVets_YkvFk88iWsw" });
                 return api;
             });
 builder.Services.AddSwaggerGen();
+builder.Services.AddMvc();
 
+builder.Services.AddMvc().AddNewtonsoftJson();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,7 +27,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+
 
 app.UseAuthorization();
 

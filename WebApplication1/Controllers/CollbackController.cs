@@ -18,6 +18,12 @@ public class CallbackController : ControllerBase
         _vkApi = api;
     }
 
+    [HttpGet]
+    [Route("index")]
+    public void Index()
+    {
+        HttpContext.Response.WriteAsync("hey bro!");
+    }
     [HttpPost]
     [Route("confirmation")]
     public Task Callback([FromBody] Updates updates)
@@ -29,7 +35,7 @@ public class CallbackController : ControllerBase
             // Если это уведомление для подтверждения адреса
             case "confirmation":
                 // Отправляем строку для подтверждения 
-                HttpContext.Response.WriteAsJsonAsync("2644ba0e");
+                HttpContext.Response.WriteAsJsonAsync("c5787802");
                 
                 return Task.CompletedTask;
         }
